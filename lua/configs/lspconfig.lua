@@ -55,6 +55,7 @@ local servers = {
 	"html",
 	"tailwindcss",
 	"gopls",
+	"ts_ls",
 }
 
 -- lsps with default config
@@ -75,15 +76,15 @@ vim.diagnostic.config {
 	severity_sort = false,
 	float = {
 		border = "rounded",
-		header = false,
+		header = nil,
 	},
 }
 
 -- Show diagnostics text on cursor hold
-local lspGroup = vim.api.nvim_create_augroup("Lsp", { clear = true })
+-- local lspGroup = vim.api.nvim_create_augroup("Lsp", { clear = true })
 
 -- https://github.com/naborisk/dotfiles/blob/383041e06c070d78e4d990b662cfa13d35ce0a64/nvim/after/plugin/nvim-lspconfig.lua#L169-L172
-vim.api.nvim_create_autocmd("CursorHold", {
-	command = "lua vim.diagnostic.open_float()",
-	group = lspGroup,
-})
+-- vim.api.nvim_create_autocmd("CursorHold", {
+-- 	command = "lua vim.diagnostic.open_float()",
+-- 	group = lspGroup,
+-- })

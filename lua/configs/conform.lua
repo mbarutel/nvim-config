@@ -5,6 +5,7 @@ local options = {
     html = { "prettier" },
     vue = { "prettier" },
     go = { "golines" },
+    tsx = { "prettier" },
   },
 
   format_on_save = {
