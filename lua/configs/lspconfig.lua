@@ -55,7 +55,7 @@ local servers = {
 	"html",
 	"tailwindcss",
 	"gopls",
-	-- "ts_ls",
+	"ts_ls",
 }
 
 -- lsps with default config

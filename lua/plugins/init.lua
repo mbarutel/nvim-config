@@ -91,26 +91,46 @@ return {
       },
     },
   },
+  -- {
+  --   "greggh/claude-code.nvim",
+  --   keys = {
+  --     {
+  --       "<leader>cc",
+  --       function()
+  --         require("claude-code").toggle()
+  --       end,
+  --       desc = "Toggle Claude Code",
+  --     },
+  --   },
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim", -- Required for git operations
+  --   },
+  --   config = function()
+  --     require("claude-code").setup({
+  --       window = {
+  --         position = "float",
+  --       },
+  --     })
+  --   end,
+  -- },
   {
-    "greggh/claude-code.nvim",
-    keys = {
-      {
-        "<leader>cc",
-        function()
-          require("claude-code").toggle()
-        end,
-        desc = "Toggle Claude Code",
-      },
+    "kdheepak/lazygit.nvim",
+    lazy = true,
+    cmd = {
+      "LazyGit",
+      "LazyGitConfig",
+      "LazyGitCurrentFile",
+      "LazyGitFilter",
+      "LazyGitFilterCurrentFile",
     },
+    -- optional for floating window border decoration
     dependencies = {
-      "nvim-lua/plenary.nvim", -- Required for git operations
+      "nvim-lua/plenary.nvim",
     },
-    config = function()
-      require("claude-code").setup({
-        window = {
-          position = "float",
-        },
-      })
-    end,
+    -- setting the keybinding for LazyGit with 'keys' is recommended in
+    -- order to load the plugin when the command is run for the first time
+    keys = {
+      { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+    },
   },
 }

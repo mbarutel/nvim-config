@@ -7,11 +7,16 @@ local map = vim.keymap.set
 -- map("i", "lu", "<ESC>")
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("x", "P", '"_dP', { desc = "Paste without yanking" })
+map("n", "<leader>r", ':bufdo e', { desc = "reset all buffers opened" })
 
 -- Panes
 map("n", "|", ":vsplit<CR>", { desc = "Split pane vertically" })
 map("n", "\\", ":split<CR>", { desc = "Split pane horizontally" })
 map("n", "<leader>q", ":close<CR>", { desc = "Close pane" })
+
+-- Navigating
+map("n", "<C-d>", "<C-d>zz", { desc = "Half page down and center" })
+map("n", "<C-u>", "<C-u>zz", { desc = "Half page up and center" })
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 -- LSP
