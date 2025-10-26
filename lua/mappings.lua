@@ -17,6 +17,8 @@ map("n", "<leader>q", ":close<CR>", { desc = "Close pane" })
 -- Navigating
 map("n", "<C-d>", "<C-d>zz", { desc = "Half page down and center" })
 map("n", "<C-u>", "<C-u>zz", { desc = "Half page up and center" })
+map("n", "<C-down>", "<C-e>", { desc = "Scroll down" })
+map("n", "<C-up>", "<C-y>", { desc = "Scroll up" })
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 -- LSP
