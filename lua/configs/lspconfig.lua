@@ -50,6 +50,14 @@ lspconfig.ts_ls.setup {
 	},
 }
 
+-- Setup typos_lsp separately with specific filetypes
+lspconfig.typos_lsp.setup {
+	on_attach = nvlsp.on_attach,
+	on_init = nvlsp.on_init,
+	capabilities = nvlsp.capabilities,
+	filetypes = { "markdown", "text" },
+}
+
 -- Setup other LSPs with defaults
 local servers = {
 	"html",

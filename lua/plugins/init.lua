@@ -20,7 +20,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {
-        "vim",
+       "vim",
         "lua",
         "vimdoc",
         "html",
@@ -132,5 +132,25 @@ return {
     keys = {
       { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
     },
+  },
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    event = "VeryLazy",
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    },
+  },
+  {
+    "stevearc/aerial.nvim",
+    event = "VeryLazy",
+    opts = { backends = { "lsp", "treesitter" } },
+    config = function(_, opts)
+      require("aerial").setup(opts)
+      vim.keymap.set("n", "<M-Down>", require("aerial").next, { desc = "Next symbol" })
+      vim.keymap.set("n", "<M-Up>", require("aerial").prev, { desc = "Prev symbol" })
+    end,
   },
 }

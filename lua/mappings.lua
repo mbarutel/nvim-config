@@ -20,6 +20,7 @@ map("n", "<C-u>", "<C-u>zz", { desc = "Half page up and center" })
 map("n", "<C-down>", "<C-e>", { desc = "Scroll down" })
 map("n", "<C-up>", "<C-y>", { desc = "Scroll up" })
 
+
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 -- LSP
 map("n", "<leader>ld", function()
@@ -38,3 +39,8 @@ map("n", "<leader>m", function()
     vim.t.maximized = true
   end
 end, { desc = "Turn a pane into full screen" })
+
+-- Aerial mappings
+map("n", "<leader>a", "<cmd>AerialToggle<CR>", { desc = "Toggle Aerial outline" })
+map("n", "<leader>fa", "<cmd>Telescope aerial<CR>", { desc = "Find symbols with Telescope" })
+map("n", "<leader>fn", "<cmd>AerialNavToggle<CR>", { desc = "Toggle Aerial navigation" })
