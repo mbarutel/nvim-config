@@ -6,6 +6,7 @@ local map = vim.keymap.set
 
 -- map("i", "lu", "<ESC>")
 map("n", ";", ":", { desc = "CMD enter command mode" })
+map("i", "<C-s>", "<ESC>:w<CR>", { desc = "Activate normal mode and save" })
 map("x", "P", '"_dP', { desc = "Paste without yanking" })
 map("n", "<leader>r", ':bufdo e', { desc = "reset all buffers opened" })
 
