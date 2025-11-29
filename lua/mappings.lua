@@ -7,7 +7,6 @@ local map = vim.keymap.set
 -- ============================================================================
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
-map("i", "<C-s>", "<ESC>:w<CR>", { desc = "Activate normal mode and save" })
 map("x", "P", '"_dP', { desc = "Paste without yanking" })
 map("n", "<leader>r", ":bufdo e<CR>", { desc = "Reload all buffers" })
 
@@ -61,11 +60,11 @@ map("n", "<leader>fn", "<cmd>AerialNavToggle<CR>", { desc = "Toggle Aerial nav" 
 -- DAP (Debugging)
 -- ============================================================================
 
-map("n", "<leader>db", "<cmd>DapToggleBreakpoint<CR>", { desc = "DAP: Toggle breakpoint" })
-map("n", "<leader>dc", "<cmd>DapContinue<CR>", { desc = "DAP: Start/Continue" })
-map("n", "<leader>di", "<cmd>DapStepInto<CR>", { desc = "DAP: Step into" })
-map("n", "<leader>do", "<cmd>DapStepOut<CR>", { desc = "DAP: Step out" })
-map("n", "<leader>ds", "<cmd>DapStepOver<CR>", { desc = "DAP: Step over" })
-map("n", "<leader>dt", "<cmd>DapTerminate<CR>", { desc = "DAP: Terminate" })
+map("n", "<F9>", "<cmd>DapToggleBreakpoint<CR>", { desc = "DAP: Toggle breakpoint" })
+map("n", "<F5>", "<cmd>DapContinue<CR>", { desc = "DAP: Start/Continue" })
+map("n", "<F11>", "<cmd>DapStepInto<CR>", { desc = "DAP: Step into" })
+map("n", "<F12>", "<cmd>DapStepOut<CR>", { desc = "DAP: Step out" })
+map("n", "<F10>", "<cmd>DapStepOver<CR>", { desc = "DAP: Step over" })
+map("n", "<S-F5>", "<cmd>DapTerminate<CR>", { desc = "DAP: Terminate" })
 map("n", "<leader>du", "<cmd>lua require('dapui').toggle()<CR>", { desc = "DAP: Toggle UI" })
 map("n", "<leader>dr", "<cmd>DapToggleRepl<CR>", { desc = "DAP: Toggle REPL" })

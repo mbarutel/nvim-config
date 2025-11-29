@@ -20,7 +20,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {
-       "vim",
+        "vim",
         "lua",
         "vimdoc",
         "html",
@@ -146,10 +146,8 @@ return {
     "rcarriga/nvim-dap-ui",
     dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
     config = function()
-      local dap, dapui = require("dap"), require("dapui")
-      
+      local dap, dapui = require "dap", require "dapui"
       dapui.setup()
-      
       -- Automatically open/close DAP UI
       dap.listeners.after.event_initialized["dapui_config"] = function()
         dapui.open()
