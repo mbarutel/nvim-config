@@ -44,7 +44,11 @@ return {
     "folke/flash.nvim",
     event = "VeryLazy",
     ---@type Flash.Config
-    opts = {},
+    opts = {
+      search = {
+        min_pattern_length = 2,
+      },
+    },
     -- stylua: ignore
     keys = {
       { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
@@ -91,28 +95,6 @@ return {
       },
     },
   },
-  -- {
-  --   "greggh/claude-code.nvim",
-  --   keys = {
-  --     {
-  --       "<leader>cc",
-  --       function()
-  --         require("claude-code").toggle()
-  --       end,
-  --       desc = "Toggle Claude Code",
-  --     },
-  --   },
-  --   dependencies = {
-  --     "nvim-lua/plenary.nvim", -- Required for git operations
-  --   },
-  --   config = function()
-  --     require("claude-code").setup({
-  --       window = {
-  --         position = "float",
-  --       },
-  --     })
-  --   end,
-  -- },
   {
     "kdheepak/lazygit.nvim",
     lazy = true,
@@ -153,4 +135,81 @@ return {
       vim.keymap.set("n", "<M-Up>", require("aerial").prev, { desc = "Prev symbol" })
     end,
   },
+  -- DAP (Debug Adapter Protocol) core
+  {
+    "mfussenegger/nvim-dap",
+    -- NO config here, it's handled by dap-ui below
+  },
+
+  -- DAP UI for a better debugging experience
+  {
+    "rcarriga/nvim-dap-ui",
+    dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+    config = function()
+      local dap, dapui = require("dap"), require("dapui")
+      
+      dapui.setup()
+      
+      -- Automatically open/close DAP UI
+      dap.listeners.after.event_initialized["dapui_config"] = function()
+        dapui.open()
+      end
+      dap.listeners.before.event_terminated["dapui_config"] = function()
+        dapui.close()
+      end
+      dap.listeners.before.event_exited["dapui_config"] = function()
+        dapui.close()
+      end
+    end,
+  },
+
+  -- Go-specific DAP configuration
+  {
+    "leoluz/nvim-dap-go",
+    ft = "go",
+    dependencies = "mfussenegger/nvim-dap",
+    config = function()
+      require("dap-go").setup()
+    end,
+  },
+  -- {
+  --   "greggh/claude-code.nvim",
+  --   keys = {
+  --     {
+  --       "<leader>cc",
+  --       function()
+  --         require("claude-code").toggle()
+  --       end,
+  --       desc = "Toggle Claude Code",
+  --     },
+  --   },
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim", -- Required for git operations
+  --   },
+  --   config = function()
+  --     require("claude-code").setup({
+  --       window = {
+  --         position = "float",
+  --       },
+  --     })
+  --   end,
+  -- },
+  -- {
+  --   "ThePrimeagen/harpoon",
+  --   branch = "harpoon2",
+  --   dependencies = { "nvim-lua/plenary.nvim" },
+  --   config = function()
+  --     local harpoon = require("harpoon")
+  --
+  --     harpoon:setup()
+  --
+  --     vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
+  --     vim.keymap.set("n", "<leader>h", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+  --
+  --     vim.keymap.set("n", "<leader>1", function() harpoon:list():select(1) end)
+  --     vim.keymap.set("n", "<leader>2", function() harpoon:list():select(2) end)
+  --     vim.keymap.set("n", "<leader>3", function() harpoon:list():select(3) end)
+  --     vim.keymap.set("n", "<leader>4", function() harpoon:list():select(4) end)
+  --   end,
+  -- }
 }
