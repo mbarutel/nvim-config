@@ -57,7 +57,7 @@ end, { desc = "LSP: Find references" })
 -- ============================================================================
 
 map("n", "<C-t>", "<cmd>Telescope find_files<CR>", { desc = "Find files" })
-map("n", "<M-t>", "<cmd>Telescope live_grep<CR>", { desc = "Find words" })
+map("n", "<C-f>", "<cmd>Telescope live_grep<CR>", { desc = "Find words" })
 
 -- ============================================================================
 -- Git
@@ -70,7 +70,7 @@ map("n", "<C-g>", "<cmd>LazyGit<CR>", { desc = "LazyGit" })
 -- ============================================================================
 
 map("n", "<leader>a", "<cmd>AerialToggle<CR>", { desc = "Toggle outline" })
-map("n", "<C-f>", "<cmd>Telescope aerial<CR>", { desc = "Find symbols" })
+map("n", "<leader>fa", "<cmd>Telescope aerial<CR>", { desc = "Find symbols" })
 map("n", "<leader>fn", "<cmd>AerialNavToggle<CR>", { desc = "Toggle Aerial nav" })
 
 -- ============================================================================
