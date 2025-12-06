@@ -119,11 +119,7 @@ return {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     event = "VeryLazy",
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    },
+    opts = {},
   },
   {
     "stevearc/aerial.nvim",
@@ -135,7 +131,6 @@ return {
       vim.keymap.set("n", "<M-Up>", require("aerial").prev, { desc = "Prev symbol" })
     end,
   },
-  -- DAP (Debug Adapter Protocol) core
   {
     "mfussenegger/nvim-dap",
     -- NO config here, it's handled by dap-ui below
