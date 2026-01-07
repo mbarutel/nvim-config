@@ -133,7 +133,55 @@ return {
   },
   {
     "mfussenegger/nvim-dap",
-    -- NO config here, it's handled by dap-ui below
+    config = function()
+      -- Function to set DAP highlights
+      local function set_dap_highlights()
+        vim.api.nvim_set_hl(0, "DapBreakpoint", { fg = "#e51400" })
+        vim.api.nvim_set_hl(0, "DapLogPoint", { fg = "#61afef" })
+        vim.api.nvim_set_hl(0, "DapStopped", { fg = "#98c379" })
+        vim.api.nvim_set_hl(0, "DapStoppedLine", { bg = "#2e3440" })
+      end
+
+      -- Set highlights now
+      set_dap_highlights()
+
+      -- Re-apply highlights after colorscheme changes
+      vim.api.nvim_create_autocmd("ColorScheme", {
+        callback = set_dap_highlights,
+      })
+
+      -- Customize DAP signs (icons and colors)
+      vim.fn.sign_define("DapBreakpoint", {
+        text = "●",
+        texthl = "DapBreakpoint",
+        linehl = "",
+        numhl = "DapBreakpoint",
+      })
+      vim.fn.sign_define("DapBreakpointCondition", {
+        text = "◆",
+        texthl = "DapBreakpoint",
+        linehl = "",
+        numhl = "DapBreakpoint",
+      })
+      vim.fn.sign_define("DapBreakpointRejected", {
+        text = "○",
+        texthl = "DapBreakpoint",
+        linehl = "",
+        numhl = "DapBreakpoint",
+      })
+      vim.fn.sign_define("DapLogPoint", {
+        text = "◉",
+        texthl = "DapLogPoint",
+        linehl = "",
+        numhl = "DapLogPoint",
+      })
+      vim.fn.sign_define("DapStopped", {
+        text = "→",
+        texthl = "DapStopped",
+        linehl = "DapStoppedLine",
+        numhl = "DapStopped",
+      })
+    end,
   },
 
   -- DAP UI for a better debugging experience
@@ -143,6 +191,7 @@ return {
     config = function()
       local dap, dapui = require "dap", require "dapui"
       dapui.setup()
+
       -- Automatically open/close DAP UI
       dap.listeners.after.event_initialized["dapui_config"] = function()
         dapui.open()

@@ -9,6 +9,9 @@ local map = vim.keymap.set
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("x", "P", '"_dP', { desc = "Paste without yanking" })
 map("n", "<leader>r", ":bufdo e<CR>", { desc = "Reload all buffers" })
+map("n", "<leader>c", function()
+  require("nvchad.tabufline").close_buffer()
+end, { desc = "Close buffer" })
 
 -- ============================================================================
 -- Window Management
